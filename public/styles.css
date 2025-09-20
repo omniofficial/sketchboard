@@ -9,20 +9,15 @@
 }
 
 #container {
-    box-sizing: border-box;
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
-    width: 960px; /* static */
-    height: 960px; /* static */
-    gap: 2px;
+    width: 600px;
+    height: 600px;
 }
 
 .square {
-    border: 1px solid black;
     box-sizing: border-box;
-    aspect-ratio: 1 / 1;
-    flex: 0 0 auto;
 }
 
 .button-container {

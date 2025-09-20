@@ -13,26 +13,22 @@ function resizeGrid() {
 }
 
 function createGrid(squaresPerSide) {
-    const gap = 2;
-    const containerSize = container.offsetWidth;
-    const squareSize =
-        (containerSize - (squaresPerSide - 1) * gap) / squaresPerSide;
-
     const totalSquares = squaresPerSide * squaresPerSide;
 
     for (let i = 0; i < totalSquares; i++) {
         const gridsquare = document.createElement("div");
         gridsquare.classList.add("square");
-        container.appendChild(gridsquare);
 
-        // Dynamic sizing
-        gridsquare.style.width = `${squareSize}px`;
-        gridsquare.style.height = `${squareSize}px`;
+        // Use percentages instead of pixels
+        gridsquare.style.flex = `0 0 ${100 / squaresPerSide}%`;
+        gridsquare.style.height = "auto"; // or use aspect-ratio: 1/1
 
-        // Hover effect for each square
+        // Hover effect
         gridsquare.addEventListener("mouseenter", function () {
             gridsquare.style.backgroundColor = "lightblue";
         });
+
+        container.appendChild(gridsquare);
     }
 }
 
