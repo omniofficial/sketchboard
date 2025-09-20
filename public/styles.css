@@ -1,11 +1,16 @@
 #container {
-    border: 2px solid black;
+    box-sizing: border-box;
+    border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
-    width: 480px; /* adjust size */
-    height: 480px; /* adjust size */
+    width: 960px; /* static */
+    height: 960px; /* static */
+    gap: 2px;
 }
 
 .square {
-  
+    flex: 0 0 calc((100% / 16) - (2px * 15 / 16)); /* width fixed */
+    aspect-ratio: 1 / 1; /* height matches width */
+    border: 1px solid black;
+    box-sizing: border-box;
 }
