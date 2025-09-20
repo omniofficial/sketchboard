@@ -1,27 +1,46 @@
-// I need to add logic here where a user can click a button with a prompt. Prompt will ask how many squares per side to add to the container. Container size will be the same, it will not change.
+function resizeGrid() {
+    var squaresPerSide = prompt("Enter number of squares per side (max 100)");
 
-// Button Logic
+    squaresPerSide = Math.min(Number(squaresPerSide), 100); // limit to 100
 
-// Size = button input x button input
+    // Clear previous grid
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
 
-/*
-for (let i = 0, i < size; i++){
-CLEAR previous container, then add grids. 
+    // Call createGrid with new size
+    createGrid(squaresPerSide);
 }
-*/
+
+function createGrid(squaresPerSide) {
+    const gap = 2;
+    const containerSize = container.offsetWidth;
+    const squareSize =
+        (containerSize - (squaresPerSide - 1) * gap) / squaresPerSide;
+
+    const totalSquares = squaresPerSide * squaresPerSide;
+
+    for (let i = 0; i < totalSquares; i++) {
+        const gridsquare = document.createElement("div");
+        gridsquare.classList.add("square");
+        container.appendChild(gridsquare);
+
+        // Dynamic sizing
+        gridsquare.style.width = `${squareSize}px`;
+        gridsquare.style.height = `${squareSize}px`;
+
+        // Hover effect for each square
+        gridsquare.addEventListener("mouseenter", function () {
+            gridsquare.style.backgroundColor = "lightblue";
+        });
+    }
+}
 
 const container = document.querySelector("#container");
-for (let i = 0; i < 256; i++) {
-    const gridsquare = document.createElement("div");
-    gridsquare.classList.add("square");
-    container.appendChild(gridsquare);
-}
 
-// Hover effect using event listener
-const gridsquares = document.querySelectorAll(".square");
+// Initial grid
+createGrid(16); // Default grid creation
 
-gridsquares.forEach((square) => {
-    square.addEventListener("mouseenter", () => {
-        square.style.backgroundColor = "lightblue";
-    });
-});
+// Button Logic
+let resizeBtn = document.querySelector("#resize");
+resizeBtn.addEventListener("click", resizeGrid); // Upon click, run resizeGrid

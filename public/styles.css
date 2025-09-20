@@ -1,3 +1,13 @@
+.title {
+    text-align: center;
+}
+
+.grid-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #container {
     box-sizing: border-box;
     border: 1px solid black;
@@ -9,8 +19,15 @@
 }
 
 .square {
-    flex: 0 0 calc((100% / 16) - (2px * 15 / 16)); /* width fixed */
-    aspect-ratio: 1 / 1; /* height matches width */
     border: 1px solid black;
     box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+    flex: 0 0 auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
 }
