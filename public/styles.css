@@ -1,0 +1,11 @@
+#container {
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    width: 480px; /* adjust size */
+    height: 480px; /* adjust size */
+}
+
+.square {
+  
+}
